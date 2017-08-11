@@ -6,33 +6,19 @@
 
     <!-- Bootstrap Boilerplate... -->
 
-    <div class="panel-body">
-        <!-- Display Validation Errors -->
+    <!-- Display Validation Errors -->
     @include('common.errors')
 
     <!-- New Task Form -->
-        <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+    <form action="{{ url('categories') }}" method="POST">
         {{ csrf_field() }}
 
         <!-- Task Name -->
-            <div class="form-group">
-                <label for="task" class="col-sm-3 control-label">Task</label>
+        Category Name : <input name="name"/>
 
-                <div class="col-sm-6">
-                    <input type="text" name="name" id="task-name" class="form-control">
-                </div>
-            </div>
-
-            <!-- Add Task Button -->
-            <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-6">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fa fa-plus"></i> Add Task
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+        <!-- Add Task Button -->
+        <input type="submit" value="Add Category"/>
+    </form>
 
     <!-- TODO: Current Tasks -->
 @endsection
