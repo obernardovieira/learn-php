@@ -42,5 +42,8 @@ Route::post('/categories', function (Request $request) {
 });
 
 Route::get('/items', function () {
-    return view('items');
+    $categories = Categories::orderBy('name', 'asc')->get();
+    return view('items', [
+        'categories' => $categories
+    ]);
 });
