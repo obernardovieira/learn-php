@@ -12,6 +12,7 @@
 */
 
 use App\Categories;
+use App\Items;
 use Illuminate\Http\Request;
 
 Route::get('/welcome', function () {
@@ -46,4 +47,22 @@ Route::get('/items', function () {
     return view('items', [
         'categories' => $categories
     ]);
+});
+
+Route::post('/items', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|max:255',
+        'value' => 'required',
+    ]);
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+    $item = new Items;
+    $item->category = Categories::select('id')->where('name', $request->category)->get()[0]['id'];
+    $item->name = $request->name;
+    $item->value = $request->value;
+    $item->save();
+    return redirect('/');
 });
