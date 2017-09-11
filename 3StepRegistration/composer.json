@@ -1,0 +1,10 @@
+{
+    "name" : "3StepRegistration",
+    "description": "U know dude",
+    "require": {
+        "vlucas/phpdotenv": "2.4.0"
+    },
+    "autoload": {
+        "psr-4": {"TSR\\": "./"}
+    }
+}
